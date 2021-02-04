@@ -1,5 +1,6 @@
 package com.companyCat;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -16,14 +17,87 @@ public class Main {
         //HomeTask7();
         //HomeTask8();
         //HomeTask9();
-        HomeTask10();
-        //по рисованию геометрических фигур прошу не судить строго  - мало что в памяти из геометрии.
-        // на ромб не хватило усидчивости(
+        //HomeTask10();
+        //по рисованию геометрических фигур прошу не судить строго  -
+        // мало что в памяти из геометрии.на ромб не хватило усидчивости(
         //HomeTask11_FourAngles();
         //HomeTask11_Three90Angles();
         //HomeTask11_Three60Angles();
+        //Task_HomeDop1();
+        //Task_HomeDop2();
+        Task_HomeDop3();
 
     }
+
+    private static void Task_HomeDop3() {
+        //3. Натуральное число называют совершенным, если оно равно сумме всех своих
+        // делителей, включая 1. Например,
+        // 6 = 1 + 2 + 3. Найти совершенные числа, меньшие заданного числа N.
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число N, меньше которого вывести совершенные числа ");
+        long N = scanner.nextLong();
+        long Excellent;
+        int j,i;
+         for (i = 1; i < N; i++) {
+             Excellent = 0;
+
+             for (j = 1; j < i; j++) {
+
+                 if (i % j == 0) {
+                     Excellent += j;
+                 }
+             }
+                if ((Excellent) == i) {
+                    System.out.println(" совершенное число " + Excellent);
+                }
+            }
+    }
+
+    private static void Task_HomeDop2() {
+        //2. Для заданного числа найти все его делители.
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("введите любое число");
+        int Number = scanner.nextInt();
+
+        for (int i = 1; i <= Number; i++) {
+            if (Number % i == 0) {
+                System.out.println("делитель = " + i);
+            }
+        }
+    }
+
+    private static void Task_HomeDop1() {
+        //1. В заданном натуральном числе поменять порядок цифр на обратный
+        // и сравнить полученное число с исходным
+        Scanner scanner = new Scanner(System.in);
+        double natNum2 = 0;
+        double nat;
+        int a =1;
+
+        System.out.println("Введите натуральное число");
+        long natNum = scanner.nextLong();
+        long natNum0 = natNum;
+
+        do {
+            nat = natNum % 10;
+            //System.out.println(nat); тестирование
+            natNum /=10;
+            a *=10;
+            natNum2 += nat/a;
+        }
+        while (natNum>=1);
+
+        natNum2 = natNum2*a;
+        System.out.println(natNum2);
+        if (natNum0 == natNum2){
+            System.out.println("числа равны");
+        }
+        else {
+            System.out.println((natNum0 > natNum2) ? "введенное изначально число больше отображенного" :
+                    "отображенное число больше");
+        }
+        }
+
 
     private static void HomeTask10() {
         /*10) Дана арифметическая прогрессия 1, 5, 9, 13, ... Написать программу
@@ -55,8 +129,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите Z");
         double Z = scanner.nextDouble();
-        int i=0, a=2, b= 4, count=0, lastI=0;
+        int i, a=2, b= 4, count=0, lastI=0;
         double sumI = 0;
+
         for (i = a; sumI <=Z ; i+=b) {
             sumI +=i;
             count++;
@@ -83,8 +158,8 @@ public class Main {
         //уравнения х^2+y^2=k^2
         //, где х, у и k лежат в интервале от 1 до 30. Решения, которые
         //получаются, перестановкой х и у, считать совпадающими.
-        int  y = 1, k = 1;
-        double x = 1;
+        int  y ,k;
+        double x;
         for (k = 1; k<= 30; k++){
             for (y = 1; y <=30;y++){
                 x = Math.sqrt(k*k-y*y);
@@ -104,7 +179,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите значение n для фунции Z = sum (i=1:20) sum (k=1,n) X^k(i)/k!");
         int n= scanner.nextInt();
-        double x=0, z=0;
+        double x, z=0;
+
         for (int i = 1; i <=20 ; i++) {
             System.out.println("Введите значение X для фунции Z = sum (i=1:20) " +
                     "sum (k=1,n) X^k(i)/k! для итерации номер " +i);
@@ -126,7 +202,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите сторону равностороннего треугольника  a =  * *");
         double a = scanner.nextDouble();
-        double h = 0;
+        double h;
         h = (Math.sqrt(3)*a)/2; //точно не уверенна )) это высота такого треугольника
 
         for (int i = 0; i <= h; i++) {
@@ -139,7 +215,7 @@ public class Main {
                 }
             }
 
-            for (int j = 1; j <= (a)+1; j++) {
+            for (int j = 1; j <= a+1; j++) {
                 System.out.print(" * ");
             }
             a--;
@@ -156,7 +232,7 @@ public class Main {
         System.out.println("Введите меньший катет прямоугольного треугольника");
         int a = scanner.nextInt();
         double b = a*1.2; // просто формально больший катет
-        int j = 0, i = 0;
+        int j, i;
 
         for (i = 1; i <= b; i++) {
             for (j = 1; j <= a; j++) {
@@ -175,7 +251,7 @@ public class Main {
         System.out.println("Введите стороны прямоугольника a (высота) и b(ширина):");
         int a = scanner.nextInt();
         int b = scanner.nextInt();
-        int j = 0, i = 0;
+        int j, i;
 
         for (i = 0; i < a; i++) {
             for (j = 0; j < b; j++) {
@@ -190,7 +266,7 @@ private static void HomeTask7() {
         //  7) Найти 15 первых натуральных чисел, делящихся нацело на 19 и больших 100.
         int  Del = 19;
         int count= 0;
-        long Nature19 = 0;
+        long Nature19;
         for (int i = 101; count<15; i++) {
             Nature19 = i % Del;
             if (Nature19==0){
@@ -203,9 +279,9 @@ private static void HomeTask7() {
 
     private static void HomeTask5() {
         //5) Вычислить значения функции
-        // z1= summ i=1;15 (i+xi)i!
+        // z1= sum i=1;15 (i+xi)/i!
          //где xi — элементы, вводимые с клавиатуры.
-        double x=0,z1=0;
+        double x,z1=0;
         Scanner scanner = new Scanner(System.in);
         final int IMAX=15;
         for (int i = 1; i <= IMAX ; i++) {
@@ -224,11 +300,10 @@ private static void HomeTask7() {
         //Дано натуральное число. Верно ли, что цифра а встречается в нем реже, чем
         //цифра b?
         Scanner scanner = new Scanner(System.in);
-        int a = 0, b = 0;
+        int a, b;
         long a1 = 0, b1=0;
-        long Number = 0, rang = 1;
-        long Number1=1;
-
+        long Number, rang;
+        long Number1;
 
         System.out.println(" введите натуральное число и введите цифры a b - " +
                 "будем проверять какое число встречается чаще"+System.lineSeparator());
@@ -256,7 +331,7 @@ private static void HomeTask7() {
     private static void HomeTask2() {
         //2) Написать программу вычисления функции y=ax^2+b при a = 3, b = -5
         // Аргумент x принимает значения от 1 до 5 с шагом 0,5.
-        float x = 0, y=0, a = 3, b = -5;
+        float x, y, a = 3, b = -5;
         for (x = 1; x <= 5; x+=0.5) {
             y = a * x * x + b;
             System.out.println("x = " + x + " y = " + y +System.lineSeparator());
@@ -273,7 +348,7 @@ private static void HomeTask7() {
         //b) F(x) = sin^2(x)
         //c) F(x) = 2*cos(x)-1
         Scanner scan = new Scanner(System.in);
-        double x = 0, a = 0, b = 0, h = 0, funcA = 0, funcB = 0, funcC = 0;
+        double x, a, b, h, funcA, funcB, funcC;
         System.out.println("введите значения отрезка A B и шаг h");
         a = scan.nextDouble();
         b = scan.nextDouble();
@@ -303,10 +378,10 @@ private static void HomeTask7() {
 
         //x-x3/3!+x5/5!-x7/7!+x9/9!-x11/11!+x13/13!
         Scanner scanner = new Scanner(System.in);
-        double sign = 1, y = 0, x = 1, xPow=0;
+        double sign = 1, y = 0, x;
         int f=1;
-        //System.out.println("Введите x");
-       // x = scanner.nextDouble();
+        System.out.println("Введите x");
+        x = scanner.nextDouble();
 
         for (int i = 1; i <= 11; i += 2) {
             y += sign * Math.pow(x, i) / f;
